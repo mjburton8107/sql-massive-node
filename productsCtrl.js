@@ -1,12 +1,23 @@
-var app = require('./index.js');
+// var app = require('./index.js');
+let db;
 
 module.exports = {
-
-  create: function(app, name, desc, price, url){
-    db.create_product([name, desc, price, url], function(err, product){
-        console.log('this is product', product)
-    })
+  setDb: function(database) {
+    db = database;
   },
+  create: function(req, res) {
+    const { name, desc, price, url} = req.body;
+    db.create_product([name, desc, price, url], function(err, product) {
+      console.log("this is err", err, "this is product", product)
+      res.send('product added')
+    })
+
+  },
+  // create: function(app, name, desc, price, url){
+  //   db.create_product([name, desc, price, url], function(err, product){
+  //       console.log('this is product', product)
+  //   })
+  // },
   getOne: function(app, id){
     db.read_product([id], function(err, product){
     })

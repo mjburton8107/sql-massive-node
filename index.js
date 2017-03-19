@@ -2,16 +2,20 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var massive = require('massive');
-var connectionString = "postgres://MikeB@localhost/massiveproject";
+var connectionString = "postgres://lukeschunk@localhost/sandbox";
 var controller = require('./productsCtrl')
 
 var massiveInstance = massive.connectSync({connectionString : connectionString});
 
 var app = module.exports = express();
 
+app.use(bodyParser.json());
+
 app.set('db', massiveInstance);
 
 var db = app.get('db');
+
+controller.setDb(db);
 
 app.listen(3000, function(){
   console.log('now listening on port 3000');
