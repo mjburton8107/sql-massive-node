@@ -1,3 +1,5 @@
+// recommitted to gitignore files
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -8,6 +10,8 @@ var controller = require('./productsCtrl')
 var massiveInstance = massive.connectSync({connectionString : connectionString});
 
 var app = module.exports = express();
+
+app.use(bodyParser.json());
 
 app.set('db', massiveInstance);
 
