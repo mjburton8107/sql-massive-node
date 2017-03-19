@@ -1,10 +1,15 @@
-var app = require('./index.js');
+let db;
 
 module.exports = {
 
-  create: function(app, name, desc, price, url){
+  setDb: function(database) {
+    db = database;
+  },
+
+  create: function(req, res){
+    const { name, desc, price, url } = req.body;
     db.create_product([name, desc, price, url], function(err, product){
-        console.log('this is product', product)
+      res.send('product added')
     })
   },
   getOne: function(app, id){

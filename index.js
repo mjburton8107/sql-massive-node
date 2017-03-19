@@ -11,6 +11,8 @@ var massiveInstance = massive.connectSync({connectionString : connectionString})
 
 var app = module.exports = express();
 
+app.use(bodyParser.json());
+
 app.set('db', massiveInstance);
 
 var db = app.get('db');
