@@ -19,11 +19,11 @@ var db = app.get('db');
 controller.setDb(db);
 
 app.listen(3000, function(){
-  console.log('now listening on port 3000');
+  console.log('noyepyepyepw listening on port 3000');
 })
 
 app.post('/api/products', controller.create);
 app.get('/api/products/:productId', controller.getOne);
 app.get('/api/products', controller.getAll);
-app.put('/api/products/:productId?desc=', controller.update);
+app.put('/api/products/:productId', controller.update);
 app.delete('/api/products/:productId', controller.delete);
