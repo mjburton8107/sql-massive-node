@@ -16,8 +16,9 @@ module.exports = {
     db.read_product([id], function(err, product){
     })
   },
-  getAll: function(app){
+  getAll: function(req, res){
     db.read_products(function(err, products){
+    res.send(products)
     })
   },
   update: function(app, id, desc){

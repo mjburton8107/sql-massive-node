@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.set('db', massiveInstance);
 
 var db = app.get('db');
+controller.setDb(db);
 
 app.listen(3000, function(){
   console.log('now listening on port 3000');
